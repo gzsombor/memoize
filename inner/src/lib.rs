@@ -93,7 +93,7 @@ impl parse::Parse for CacheOption {
 impl parse::Parse for CacheOptions {
     fn parse(input: parse::ParseStream) -> syn::Result<Self> {
         let f: syn::punctuated::Punctuated<CacheOption, syn::Token![,]> =
-            input.parse_terminated(CacheOption::parse)?;
+            input.parse_terminated(CacheOption::parse, syn::Token![,])?;
         let mut opts = Self::default();
 
         for opt in f {
