@@ -195,7 +195,7 @@ mod store {
                 } else {
                     (
                         quote::quote! { ::memoize::lru::LruCache<#key_type, #value_type> },
-                        quote::quote! { ::memoize::lru::LruCache::new(#cap) },
+                        quote::quote! { ::memoize::lru::LruCache::new(std::num::NonZeroUsize::new(#cap).unwrap()) },
                     )
                 }
             }
